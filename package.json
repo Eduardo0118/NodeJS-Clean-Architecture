@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/Eduardo0118/NodeJS-Clean-Architecture.git",
   "author": "Eduardo Jose",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "git-commit-msg-linter": "^3.3.3"
+  }
 }
