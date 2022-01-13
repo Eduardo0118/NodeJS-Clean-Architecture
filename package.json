@@ -1,0 +1,8 @@
+{
+  "name": "node-clean-arch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Eduardo0118/NodeJS-Clean-Architecture.git",
+  "author": "Eduardo Jose",
+  "license": "MIT"
+}
