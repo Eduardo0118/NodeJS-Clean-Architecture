@@ -24,7 +24,7 @@
   "scripts": {
     "test": "jest",
     "test:staged": "jest --passWithNoTests",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch --clearCache"
   },
   "lint-staged": {
     "*.ts": [
