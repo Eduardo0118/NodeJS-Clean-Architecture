@@ -23,7 +23,6 @@
   },
   "scripts": {
     "test": "jest",
-    "test:staged": "jest",
-    "format": "prettier-standard --format"
+    "test:staged": "jest"
   }
 }
