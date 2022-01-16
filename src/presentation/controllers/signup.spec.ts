@@ -1,8 +1,6 @@
-import { ServerError } from './../errors/server-error'
+import { ServerError, InvalidParamError, MissingParamError } from './../errors'
 import { EmailValidator } from './../protocols/email-validator'
-import { InvalidParamError } from './../errors/invalid-param-error copy'
 import { SignUpController } from './signup'
-import { MissingParamError } from '../errors/missing-param-error'
 
 interface BodyProps {
   name?: string
