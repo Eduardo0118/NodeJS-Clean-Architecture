@@ -3,13 +3,15 @@ import { InvalidParamError } from './../errors/invalid-param-error copy'
 import { SignUpController } from './signup'
 import { MissingParamError } from '../errors/missing-param-error'
 
+interface BodyProps {
+  name?: string
+  email?: string
+  password?: string
+  passwordConfirmation?: string
+}
+
 interface BodyFieldsProps {
-  body: {
-    name?: string
-    email?: string
-    password?: string
-    passwordConfirmation?: string
-  }
+  body: BodyProps
 }
 
 interface SutProps {
@@ -17,19 +19,22 @@ interface SutProps {
   emailValidatorStub: EmailValidator
 }
 
-const bodyFields = (hideField?: string): BodyFieldsProps => {
-  const fields = {
+const bodyFields = (
+  hideField?: string,
+  fields?: BodyProps
+): BodyFieldsProps => {
+  const bodyFields = {
     body: {
-      name: 'any_name',
-      email: 'any_email@mail.com',
-      password: 'any_password',
-      passwordConfirmation: 'any_password'
+      name: fields?.name || 'any_name',
+      email: fields?.email || 'any_email@mail.com',
+      password: fields?.password || 'any_password',
+      passwordConfirmation: fields?.passwordConfirmation || 'any_password'
     }
   }
 
-  if (hideField) delete fields.body[hideField]
+  if (hideField) delete bodyFields.body[hideField]
 
-  return fields
+  return bodyFields
 }
 
 const makeSut = (): SutProps => {
@@ -96,5 +101,14 @@ describe('SignUp Controller', () => {
 
     expect(httpResponse.statusCode).toBe(400)
     expect(httpResponse.body).toEqual(new InvalidParamError('email'))
+  })
+
+  test('Should call EmailValidator with correct email', () => {
+    const { sut, emailValidatorStub } = makeSut()
+    const isValidSpy = jest.spyOn(emailValidatorStub, 'isValid')
+    const httpRequest = bodyFields()
+
+    sut.handle(httpRequest)
+    expect(isValidSpy).toHaveBeenCalledWith('any_email@mail.com')
   })
 })
