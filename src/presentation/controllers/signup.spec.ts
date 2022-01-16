@@ -3,7 +3,7 @@ import { InvalidParamError } from './../errors/invalid-param-error copy'
 import { SignUpController } from './signup'
 import { MissingParamError } from '../errors/missing-param-error'
 
-interface BodyFieldProps {
+interface BodyFieldsProps {
   body: {
     name?: string
     email?: string
@@ -17,7 +17,7 @@ interface SutProps {
   emailValidatorStub: EmailValidator
 }
 
-const bodyFields = (hideField?: string): BodyFieldProps => {
+const bodyFields = (hideField?: string): BodyFieldsProps => {
   const fields = {
     body: {
       name: 'any_name',
