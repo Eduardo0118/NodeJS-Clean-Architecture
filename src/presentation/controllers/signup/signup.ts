@@ -1,4 +1,4 @@
-import { serverError, badRequest } from '../../helpers/http-helper'
+import { serverError, badRequest, ok } from '../../helpers/http-helper'
 import { InvalidParamError, MissingParamError } from '../../errors'
 import {
   EmailValidator,
@@ -45,10 +45,7 @@ export class SignUpController implements Controller {
         password
       })
 
-      return {
-        statusCode: 200,
-        body: account
-      }
+      return ok(account)
     } catch (error) {
       return serverError()
     }
