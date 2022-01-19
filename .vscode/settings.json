@@ -3,5 +3,8 @@
   "editor.defaultFormatter": null,
   "[typescript]": {
     "editor.defaultFormatter": "numso.prettier-standard-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "numso.prettier-standard-vscode"
   }
 }
